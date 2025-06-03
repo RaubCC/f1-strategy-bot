@@ -19,7 +19,6 @@ function App() {
       setChat((c) => [...c, { role: "bot", text: `Here's a snack idea with "${msg}": Sad Toast Deluxe. Add cinnamon, cry only once. Bonus XP if you plate it ironically.` }]);
     }, 900);
   }
-
   // Add a simple JavaScript function for demonstration
   function getRandomSnack() {
     const snacks = ["Choco Bar", "Instant Noodles", "Sad Toast Deluxe", "Mystery Trail Mix", "Feral Fruit Cup"];
