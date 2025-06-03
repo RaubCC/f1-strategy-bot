@@ -1,1 +1,102 @@
-App
+// App.jsx (React)
+import React, { useState } from "react";
+
+const moodOptions = ["Tired", "Broke", "Chaotic", "Thriving", "Feral"];
+
+function App() {
+  const [pantry, setPantry] = useState("");
+  const [mood, setMood] = useState("Tired");
+  const [chat, setChat] = useState([
+    { role: "bot", text: "Hey, Snack Goblin! What's in your pantry of sadness today?" }
+  ]);
+  const [input, setInput] = useState("");
+
+  // Fake "send to GPT" function (replace with real OpenAI call!)
+  async function sendChat(msg) {
+    setChat((c) => [...c, { role: "user", text: msg }]);
+    // TODO: Call your backend/GPT endpoint here!
+    setTimeout(() => {
+      setChat((c) => [...c, { role: "bot", text: `Here's a snack idea with "${msg}": Sad Toast Deluxe. Add cinnamon, cry only once. Bonus XP if you plate it ironically.` }]);
+    }, 900);
+  }
+
+  // Add a simple JavaScript function for demonstration
+  function getRandomSnack() {
+    const snacks = ["Choco Bar", "Instant Noodles", "Sad Toast Deluxe", "Mystery Trail Mix", "Feral Fruit Cup"];
+    return snacks[Math.floor(Math.random() * snacks.length)];
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center py-8">
+      {/* Top Nav */}
+      <div className="flex items-center justify-between w-full max-w-md px-4 py-2 bg-gray-800 rounded-xl mb-4">
+        <span className="font-bold">🍔 Avatar</span>
+        <span>💰 1,200</span>
+        <span>📈 Level 5</span>
+        <span>⚙️</span>
+      </div>
+
+      {/* Main: Pantry & Mood Input */}
+      <div className="w-full max-w-md px-4">
+        <input
+          className="w-full px-3 py-2 rounded mb-2 text-black"
+          placeholder="What's in your pantry? (e.g., peanut butter, ramen)"
+          value={pantry}
+          onChange={e => setPantry(e.target.value)}
+        />
+        <div className="flex space-x-2 mb-4">
+          {moodOptions.map((m) => (
+            <button
+              key={m}
+              className={`px-2 py-1 rounded ${mood === m ? "bg-pink-600" : "bg-gray-700"}`}
+              onClick={() => setMood(m)}
+            >
+              {m}
+            </button>
+          ))}
+        </div>
+        <button
+          className="w-full bg-pink-600 hover:bg-pink-700 py-2 rounded font-bold mb-6"
+          onClick={() => sendChat(`${pantry} | mood: ${mood}`)}
+        >
+          SAVE ME FROM STARVATION
+        </button>
+      </div>
+
+      {/* Chatbot */}
+      <div className="w-full max-w-md bg-gray-800 p-4 rounded-lg mb-4 flex flex-col space-y-3 min-h-[200px]">
+        {chat.map((msg, i) => (
+          <div key={i} className={msg.role === "bot" ? "text-pink-300" : "text-gray-200 text-right"}>
+            {msg.text}
+          </div>
+        ))}
+        <div className="flex mt-2">
+          <input
+            className="flex-1 px-3 py-1 rounded-l text-black"
+            placeholder='Type "I have $2 and instant noodles"...'
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={e => (e.key === "Enter" ? (sendChat(input), setInput("")) : null)}
+          />
+          <button
+            className="bg-pink-600 px-4 py-1 rounded-r font-bold"
+            onClick={() => { sendChat(input); setInput(""); }}
+          >
+            Send
+          </button>
+        </div>
+      </div>
+
+      {/* Bottom Nav */}
+      <nav className="flex justify-between w-full max-w-md px-8">
+        <span className="hover:text-pink-400">🏠 Home</span>
+        <span className="hover:text-pink-400">🧙‍♂️ Badges</span>
+        <span className="hover:text-pink-400">📈 LevelUp</span>
+        <span className="hover:text-pink-400">🥊 Arena</span>
+      </nav>
+    </div>
+  );
+}
+
+export default App;
+
