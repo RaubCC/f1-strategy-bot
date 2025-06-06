@@ -4,12 +4,15 @@ import { drawTireChart, drawPitWindowsChart } from './charts.js';
 import { updateRaceSummary } from './summary.js';
 export function simulateStrategy() {
     // Show spinner
-    document.getElementById('loading').style.display = 'block';
+    const loading = document.getElementById('loading');
+    const results = document.getElementById('results');
+    const pitWindowResults = document.getElementById('pit-window-results');
+    const raceSummary = document.getElementById('race-summary');
 
-    // Hide existing results while loading
-    document.getElementById('results').style.display = 'none';
-    document.getElementById('pit-window-results').style.display = 'none';
-    document.getElementById('race-summary').style.display = 'none';
+    loading.style.display = 'block';
+    results.style.display = 'none';
+    pitWindowResults.style.display = 'none';
+    raceSummary.style.display = 'none';
 
     // Simulate 1.5 second loading delay
     setTimeout(() => {
@@ -18,12 +21,9 @@ export function simulateStrategy() {
         drawPitWindowsChart();
         updateRaceSummary();
 
-        // Hide spinner
-        document.getElementById('loading').style.display = 'none';
-
-        // Show results
-        document.getElementById('results').style.display = 'block';
-        document.getElementById('pit-window-results').style.display = 'block';
-        document.getElementById('race-summary').style.display = 'block';
+        loading.style.display = 'none';
+        results.style.display = 'block';
+        pitWindowResults.style.display = 'block';
+        raceSummary.style.display = 'block';
     }, 1500);
 }
