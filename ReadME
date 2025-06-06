@@ -1,0 +1,7 @@
+/f1-strategy-bot
+├── index.html
+├── styles.css
+├── app.js         → handles main button logic & wiring
+├── strategy.js    → handles simulateStrategy() and sub-functions
+├── charts.js      → handles drawTireChart(), drawPitWindowsChart()
+├── summary.js     → handles updateRaceSummary()
