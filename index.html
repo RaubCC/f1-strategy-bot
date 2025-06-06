@@ -13,9 +13,9 @@
         <h1>F1 Strategy Bot 🏎️</h1>
     </header>
     <section class="section" id="loading" style="display:none; text-align:center;">
-    <h2>Running Simulation...</h2>
-    <div class="spinner"></div>
-</section>
+        <h2>Running Simulation...</h2>
+        <div class="spinner"></div>
+    </section>
     <main>
         <section class="section" id="race-selector">
             <h2>Select Grand Prix</h2>
@@ -29,9 +29,9 @@
 
         <section class="section" id="tire-selection">
             <h2>Select Tire Strategy</h2>
-            <label><input type="checkbox" value="Soft" checked /> Soft (C5)</label><br />
-            <label><input type="checkbox" value="Medium" checked /> Medium (C3)</label><br />
-            <label><input type="checkbox" value="Hard" /> Hard (C1)</label><br />
+            <label for="soft"><input type="checkbox" id="soft" value="Soft" checked /> Soft (C5)</label><br />
+            <label for="medium"><input type="checkbox" id="medium" value="Medium" checked /> Medium (C3)</label><br />
+            <label for="hard"><input type="checkbox" id="hard" value="Hard" /> Hard (C1)</label><br />
         </section>
 
         <section class="section" id="simulate-button">
@@ -50,9 +50,7 @@
 
         <section class="section" id="race-summary">
             <h2>Race Summary Card</h2>
-            <pre id="summary-card" style="background-color: #1a1a1a; color: #00D2BE; padding: 15px; border: 1px solid #00D2BE;">
-                Simulation not run yet.
-            </pre>
+            <pre id="summary-card" style="background-color: #1a1a1a; color: #00D2BE; padding: 15px; border: 1px solid #00D2BE;">Simulation not run yet.</pre>
         </section>
     </main>
 
