@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>F1 Strategy Bot 🏎️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000;
+            color: #00D2BE;
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #00D2BE;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        main {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            border-bottom: 1px solid #00D2BE;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>F1 Strategy Bot 🏎️</h1>
+    </header>
+    <main>
+        <section class="section" id="race-selector">
+            <h2>Select Grand Prix</h2>
+            <select>
+                <option>Silverstone 🇬🇧</option>
+                <option>Monaco 🇲🇨</option>
+                <option>Spa 🇧🇪</option>
+                <option>Monza 🇮🇹</option>
+                <!-- Add more races -->
+            </select>
+        </section>
+
+        <section class="section" id="tire-selection">
+            <h2>Select Tire Strategy</h2>
+            <label><input type="checkbox" /> Soft (C5)</label><br />
+            <label><input type="checkbox" /> Medium (C3)</label><br />
+            <label><input type="checkbox" /> Hard (C1)</label><br />
+        </section>
+
+        <section class="section" id="simulate-button">
+            <button onclick="simulateStrategy()">Simulate Strategy</button>
+        </section>
+
+        <section class="section" id="results">
+            <h2>Strategy Results</h2>
+            <p>Simulation results will appear here...</p>
+        </section>
+    </main>
+
+    <script>
+        function simulateStrategy() {
+            document.getElementById('results').innerHTML = `
+                <h2>Strategy Results</h2>
+                <p>🚀 Running the simulation... (placeholder)</p>
+                <p>Expected pit windows, tire degradation, and lap delta will display here.</p>
+            `;
+        }
+    </script>
+</body>
+</html>
