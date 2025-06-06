@@ -1,7 +1,5 @@
 import { drawTireChart, drawPitWindowsChart } from './charts.js';
 import { updateRaceSummary } from './summary.js';
-import { drawTireChart, drawPitWindowsChart } from './charts.js';
-import { updateRaceSummary } from './summary.js';
 export function simulateStrategy() {
     // Show spinner
     const loading = document.getElementById('loading');
