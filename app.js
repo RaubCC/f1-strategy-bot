@@ -49,67 +49,69 @@ export function simulateStrategy() {
     }, 1000);
 }
 
-// Add Event Listener to Simulate Button
-document.getElementById('simulate-btn').addEventListener('click', simulateStrategy);
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Team/Driver Dropdown Population ---
+  const teamSelector = document.getElementById('teamSelector');
+  const driverSelector = document.getElementById('driverSelector');
 
-// --- Team/Driver Dropdown Population ---
-const teamSelector = document.getElementById('teamSelector');
-const driverSelector = document.getElementById('driverSelector');
-
-function populateTeams() {
-  teamSelector.innerHTML = '';
-  Object.entries(TEAM_THEMES).forEach(([key, team]) => {
-    const option = document.createElement('option');
-    option.value = key;
-    option.textContent = team.name;
-    teamSelector.appendChild(option);
-  });
-}
-
-function populateDrivers(teamKey) {
-  driverSelector.innerHTML = '';
-  const team = TEAM_THEMES[teamKey];
-  if (!team) return;
-  team.drivers.forEach(driver => {
-    const option = document.createElement('option');
-    option.value = driver;
-    option.textContent = driver;
-    driverSelector.appendChild(option);
-  });
-}
-
-teamSelector.addEventListener('change', (e) => {
-  populateDrivers(e.target.value);
-  applyTeamTheme(driverSelector.value);
-});
-
-driverSelector.addEventListener('change', (e) => {
-  applyTeamTheme(e.target.value);
-});
-
-// On page load:
-populateTeams();
-teamSelector.selectedIndex = 0;
-populateDrivers(teamSelector.value);
-applyTeamTheme(driverSelector.value);
-
-// --- Theming logic ---
-function getTeamForDriver(driverName) {
-  return Object.values(TEAM_THEMES).find(team => team.drivers.includes(driverName));
-}
-
-function applyTeamTheme(driverName) {
-  const team = getTeamForDriver(driverName);
-  if (!team) return;
-  document.querySelectorAll('.card').forEach(card => {
-    card.style.boxShadow = `0 2px 20px 2px ${team.color}33`;
-    card.style.border = `2px solid ${team.color}`;
-  });
-  document.getElementById('simulate-btn').style.background = team.color;
-  document.getElementById('simulate-btn').style.color = "#181c2c";
-  document.getElementById('simulate-btn').style.fontWeight = "bold";
-  const summaryCard = document.getElementById('summary-card');
-  if (summaryCard) {
-    summaryCard.innerHTML = `${team.logo} <b>${team.name}</b><br>${summaryCard.textContent}`;
+  function populateTeams() {
+    teamSelector.innerHTML = '';
+    Object.entries(TEAM_THEMES).forEach(([key, team]) => {
+      const option = document.createElement('option');
+      option.value = key;
+      option.textContent = team.name;
+      teamSelector.appendChild(option);
+    });
   }
-}
+
+  function populateDrivers(teamKey) {
+    driverSelector.innerHTML = '';
+    const team = TEAM_THEMES[teamKey];
+    if (!team) return;
+    team.drivers.forEach(driver => {
+      const option = document.createElement('option');
+      option.value = driver;
+      option.textContent = driver;
+      driverSelector.appendChild(option);
+    });
+  }
+
+  teamSelector.addEventListener('change', (e) => {
+    populateDrivers(e.target.value);
+    applyTeamTheme(driverSelector.value);
+  });
+
+  driverSelector.addEventListener('change', (e) => {
+    applyTeamTheme(e.target.value);
+  });
+
+  // On page load:
+  populateTeams();
+  teamSelector.selectedIndex = 0;
+  populateDrivers(teamSelector.value);
+  applyTeamTheme(driverSelector.value);
+
+  // --- Theming logic ---
+  function getTeamForDriver(driverName) {
+    return Object.values(TEAM_THEMES).find(team => team.drivers.includes(driverName));
+  }
+
+  function applyTeamTheme(driverName) {
+    const team = getTeamForDriver(driverName);
+    if (!team) return;
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.boxShadow = `0 2px 20px 2px ${team.color}33`;
+      card.style.border = `2px solid ${team.color}`;
+    });
+    document.getElementById('simulate-btn').style.background = team.color;
+    document.getElementById('simulate-btn').style.color = "#181c2c";
+    document.getElementById('simulate-btn').style.fontWeight = "bold";
+    const summaryCard = document.getElementById('summary-card');
+    if (summaryCard) {
+      summaryCard.innerHTML = `${team.logo} <b>${team.name}</b><br>${summaryCard.textContent}`;
+    }
+  }
+
+  // Simulate Strategy Function and other logic
+  document.getElementById('simulate-btn').addEventListener('click', simulateStrategy);
+});
