@@ -7,6 +7,7 @@ const baseLapTimes = {
 };
 
 export function drawLapDeltaChart() {
+    console.log('Lap Delta Debug:', currentStrategy.firstStintTire, currentStrategy.secondStintTire, currentStrategy.finalStintTire);
     const ctx = document.getElementById('lapDeltaChart').getContext('2d');
     const laps = Array.from({ length: 60 }, (_, i) => i + 1);
 
