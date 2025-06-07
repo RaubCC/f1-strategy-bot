@@ -1,66 +1,65 @@
 // Team theme info: driver name as key (lowercase, no spaces), but you can also use team as key
 export const TEAM_THEMES = {
-    "mercedes": {
-        team: "Mercedes-AMG PETRONAS",
-        color: "#00D2BE",
-        logo: "🐲", // Or use an SVG image path here!
-        drivers: ["George Russell", "Lewis Hamilton"]
-    },
-    "redbull": {
-        team: "Red Bull Racing",
-        color: "#1E41FF",
-        logo: "🐂",
-        drivers: ["Max Verstappen", "Sergio Perez"]
-    },
-    "ferrari": {
-        team: "Scuderia Ferrari",
-        color: "#DC0000",
-        logo: "🐎",
-        drivers: ["Charles Leclerc", "Carlos Sainz"]
-    },
-    "mclaren": {
-        team: "McLaren F1 Team",
-        color: "#FF8700",
-        logo: "🥕",
-        drivers: ["Lando Norris", "Oscar Piastri"]
-    },
-    "astonmartin": {
-        team: "Aston Martin",
-        color: "#229971",
-        logo: "🦅",
-        drivers: ["Fernando Alonso", "Lance Stroll"]
-    },
-    // Add the rest...
-    "alpine": {
-        team: "Alpine",
-        color: "#2293D1",
-        logo: "🔷",
-        drivers: ["Pierre Gasly", "Esteban Ocon"]
-    },
-    "williams": {
-        team: "Williams Racing",
-        color: "#005AFF",
-        logo: "🦅",
-        drivers: ["Alex Albon", "Logan Sargeant"]
-    },
-    "kicksauber": {
-        team: "Stake F1 Team Kick Sauber",
-        color: "#52E252",
-        logo: "🟢",
-        drivers: ["Valtteri Bottas", "Zhou Guanyu"]
-    },
-    "rb": {
-        team: "Visa Cash App RB",
-        color: "#6692FF",
-        logo: "🧢",
-        drivers: ["Yuki Tsunoda", "Daniel Ricciardo"]
-    },
-    "haas": {
-        team: "Haas F1 Team",
-        color: "#B6BABD",
-        logo: "🦈",
-        drivers: ["Kevin Magnussen", "Nico Hülkenberg"]
-    }
+  mercedes: {
+    name: "Mercedes",
+    color: "#6CD3BF",
+    logo: "assets/logos/mercedes.svg",
+    drivers: ["George Russell", "Andrea Kimi Antonelli"], // Antonelli rookie season
+  },
+  redbull: {
+    name: "Red Bull Racing",
+    color: "#1E41FF",
+    logo: "assets/logos/redbull.svg",
+    drivers: ["Max Verstappen", "Yuki Tsunoda"], // Tsunoda promoted mid-season
+  },
+  ferrari: {
+    name: "Ferrari",
+    color: "#ED1C24",
+    logo: "assets/logos/ferrari.svg",
+    drivers: ["Charles Leclerc", "Lewis Hamilton"], // 7x champ in red
+  },
+  mclaren: {
+    name: "McLaren",
+    color: "#FF8000",
+    logo: "assets/logos/mclaren.svg",
+    drivers: ["Lando Norris", "Oscar Piastri"],
+  },
+  astonmartin: {
+    name: "Aston Martin",
+    color: "#229971",
+    logo: "assets/logos/astonmartin.svg",
+    drivers: ["Fernando Alonso", "Lance Stroll"],
+  },
+  alpine: {
+    name: "Alpine",
+    color: "#2293D1",
+    logo: "assets/logos/alpine.svg",
+    drivers: ["Pierre Gasly", "Jack Doohan"], // Doohan in, Ocon out
+  },
+  williams: {
+    name: "Williams",
+    color: "#37BEDD",
+    logo: "assets/logos/williams.svg",
+    drivers: ["Alex Albon", "Logan Sargeant"],
+  },
+  visa_racing_bulls: {
+    name: "Visa Cash App RB",
+    color: "#6692FF",
+    logo: "assets/logos/visacashapprb.svg",
+    drivers: ["Daniel Ricciardo", "Liam Lawson"], // Tsunoda promoted, Lawson returns
+  },
+  sauber: {
+    name: "Stake F1 Team Kick Sauber",
+    color: "#52E252",
+    logo: "assets/logos/sauber.svg",
+    drivers: ["Valtteri Bottas", "Zhou Guanyu"],
+  },
+  haas: {
+    name: "Haas",
+    color: "#B6BABD",
+    logo: "assets/logos/haas.svg",
+    drivers: ["Nico Hülkenberg", "Oliver Bearman"], // Bearman replaces Magnussen
+  },
 };
 // Cache your original summary text somewhere!
 let baseSummaryText = null;
@@ -89,7 +88,7 @@ function applyTeamTheme(driverName) {
     const summaryCard = document.getElementById('summary-card');
     if (summaryCard) {
         // Always start with the *original* text, not the last themed one
-        summaryCard.innerHTML = `${team.logo} <b>${team.team}</b><br>${baseSummaryText}`;
+        summaryCard.innerHTML = `${team.logo} <b>${team.name}</b><br>${baseSummaryText}`;
     }
 }
 
