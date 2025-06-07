@@ -89,3 +89,36 @@ applyTeamTheme(document.getElementById('driver-select').value);
 
 const teamSelector = document.getElementById('teamSelector');
 const driverSelector = document.getElementById('driverSelector');
+
+function populateTeams() {
+  teamSelector.innerHTML = '';
+  Object.entries(TEAM_THEMES).forEach(([key, team]) => {
+    const option = document.createElement('option');
+    option.value = key;
+    option.textContent = team.name;
+    teamSelector.appendChild(option);
+  });
+}
+
+function populateDrivers(teamKey) {
+  driverSelector.innerHTML = '';
+  const team = TEAM_THEMES[teamKey];
+  if (!team) return;
+  team.drivers.forEach(driver => {
+    const option = document.createElement('option');
+    option.value = driver;
+    option.textContent = driver;
+    driverSelector.appendChild(option);
+  });
+}
+
+teamSelector.addEventListener('change', (e) => {
+  populateDrivers(e.target.value);
+  // Optionally call your theming function here, eg:
+  // applyTeamTheme(e.target.value);
+});
+
+// On page load:
+populateTeams();
+teamSelector.selectedIndex = 0;
+populateDrivers(teamSelector.value);
