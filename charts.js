@@ -94,6 +94,7 @@ const tireWearRates = {
 };
 
 export function drawTireChart() {
+    console.log('Tire Chart Debug:', currentStrategy.firstPitLap, currentStrategy.secondPitLap);
     const ctx = document.getElementById('tireChart').getContext('2d');
     const laps = Array.from({ length: 60 }, (_, i) => i + 1);
 
