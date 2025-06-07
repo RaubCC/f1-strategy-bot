@@ -94,7 +94,18 @@ export function drawTireChart() {
 // ============================
 
 export function drawLapDeltaChart() {
-    const ctx = document.getElementById('lapDeltaChart').getContext('2d');
+    // Defensive: check if currentStrategy is defined and has the expected properties
+    if (!currentStrategy || !currentStrategy.firstStintTire || !currentStrategy.secondStintTire || !currentStrategy.finalStintTire) {
+        console.error('Lap Delta Debug: currentStrategy is missing or incomplete', currentStrategy);
+        return; // Prevent further errors
+    }
+    console.log('Lap Delta Debug:', currentStrategy.firstStintTire, currentStrategy.secondStintTire, currentStrategy.finalStintTire);
+    const ctx = document.getElementById('lapDeltaChart');
+    if (!ctx) {
+        console.error('Lap Delta Debug: lapDeltaChart canvas not found');
+        return;
+    }
+    const chartCtx = ctx.getContext ? ctx.getContext('2d') : ctx;
     const laps = Array.from({ length: 60 }, (_, i) => i + 1);
 
     const strategyLapTimes = laps.map(lap => {
@@ -123,7 +134,7 @@ export function drawLapDeltaChart() {
         window.lapDeltaChartInstance.destroy();
     }
 
-    window.lapDeltaChartInstance = new Chart(ctx, {
+    window.lapDeltaChartInstance = new Chart(chartCtx, {
         type: 'line',
         data: {
             labels: laps,
