@@ -35,4 +35,19 @@ export function simulateStrategy() {
         // Draw Charts
         drawTireChart();
         drawLapDeltaChart();
-        drawPitWindowsChart()
+        drawPitWindowsChart();
+
+        // Update Summary Card
+        updateRaceSummary();
+
+        // Hide spinner, show results
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('pit-window-results').style.display = 'block';
+        document.getElementById('lap-delta-results').style.display = 'block';
+        document.getElementById('race-summary').style.display = 'block';
+    }, 1000);
+}
+
+// Add Event Listener to Simulate Button
+document.getElementById('simulate-btn').addEventListener('click', simulateStrategy);
