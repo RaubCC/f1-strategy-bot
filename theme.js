@@ -1,22 +1,22 @@
 // Team theme info: driver name as key (lowercase, no spaces), but you can also use team as key
 export const TEAM_THEMES = {
-  mercedes: {
-    name: "Mercedes",
-    color: "#6CD3BF",
-    logo: "assets/logos/mercedes.svg",
-    drivers: ["George Russell", "Andrea Kimi Antonelli"], // Antonelli rookie season
-  },
   redbull: {
     name: "Red Bull Racing",
     color: "#1E41FF",
     logo: "assets/logos/redbull.svg",
-    drivers: ["Max Verstappen", "Yuki Tsunoda"], // Tsunoda promoted mid-season
+    drivers: ["Max Verstappen", "Yuki Tsunoda"],
   },
   ferrari: {
     name: "Ferrari",
     color: "#ED1C24",
     logo: "assets/logos/ferrari.svg",
-    drivers: ["Charles Leclerc", "Lewis Hamilton"], // 7x champ in red
+    drivers: ["Charles Leclerc", "Lewis Hamilton"],
+  },
+  mercedes: {
+    name: "Mercedes",
+    color: "#6CD3BF",
+    logo: "assets/logos/mercedes.svg",
+    drivers: ["George Russell", "Andrea Kimi Antonelli"],
   },
   mclaren: {
     name: "McLaren",
@@ -34,31 +34,31 @@ export const TEAM_THEMES = {
     name: "Alpine",
     color: "#2293D1",
     logo: "assets/logos/alpine.svg",
-    drivers: ["Pierre Gasly", "Jack Doohan"], // Doohan in, Ocon out
+    drivers: ["Pierre Gasly", "Franco Colapinto"],
   },
   williams: {
     name: "Williams",
     color: "#37BEDD",
     logo: "assets/logos/williams.svg",
-    drivers: ["Alex Albon", "Logan Sargeant"],
+    drivers: ["Alexander Albon", "Carlos Sainz Jr."],
   },
-  visa_racing_bulls: {
-    name: "Visa Cash App RB",
+  racing_bulls: {
+    name: "Racing Bulls",
     color: "#6692FF",
-    logo: "assets/logos/visacashapprb.svg",
-    drivers: ["Daniel Ricciardo", "Liam Lawson"], // Tsunoda promoted, Lawson returns
+    logo: "assets/logos/racing_bulls.svg",
+    drivers: ["Liam Lawson", "Isack Hadjar"],
   },
   sauber: {
-    name: "Stake F1 Team Kick Sauber",
+    name: "Sauber",
     color: "#52E252",
     logo: "assets/logos/sauber.svg",
-    drivers: ["Valtteri Bottas", "Zhou Guanyu"],
+    drivers: ["Nico Hülkenberg", "Gabriel Bortoleto"],
   },
   haas: {
     name: "Haas",
     color: "#B6BABD",
     logo: "assets/logos/haas.svg",
-    drivers: ["Nico Hülkenberg", "Oliver Bearman"], // Bearman replaces Magnussen
+    drivers: ["Esteban Ocon", "Oliver Bearman"],
   },
 };
 // Cache your original summary text somewhere!
