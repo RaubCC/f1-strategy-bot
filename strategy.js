@@ -1,13 +1,4 @@
-export let currentStrategy = {
-    firstPitLap: 15,
-    secondPitLap: 40,
-    firstStintTire: 'Soft (C5)',
-    secondStintTire: 'Medium (C3)',
-    finalStintTire: 'Hard (C1)',
-    driver: 'George Russell',
-    grandPrix: 'Silverstone 🇬🇧'
-};
-
+import { currentStrategy } from './strategy.js';
 import { drawTireChart, drawPitWindowsChart } from './charts.js';
 import { updateRaceSummary } from './summary.js';
 export function simulateStrategy() {
