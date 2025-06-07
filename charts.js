@@ -169,8 +169,8 @@ export function drawTireChart() {
 export function drawPitWindowsChart() {
     const ctx = document.getElementById('pitWindowChart').getContext('2d');
     const laps = Array.from({ length: 60 }, (_, i) => i + 1);
-    const pitWindow1Start = 15;
-    const pitWindow2Start = 40;
+    const pitWindow1Start = currentStrategy.firstPitLap;
+    const pitWindow2Start = currentStrategy.secondPitLap;
     const windowWidth = 3;
 
     const pitWindow1Data = laps.map(lap =>
