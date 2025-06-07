@@ -71,3 +71,57 @@ button:hover {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+/* Fancy layout + animations */
+
+.strategy-panel {
+    background-color: #1a1a1a;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #00D2BE;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.strategy-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.simulate-button {
+    grid-column: span 2;
+    text-align: center;
+}
+
+.summary-card {
+    background-color: #1a1a1a;
+    color: #00D2BE;
+    padding: 15px;
+    border: 1px solid #00D2BE;
+    border-radius: 8px;
+    font-family: 'Roboto Mono', monospace;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.spinner {
+    border: 8px solid #1a1a1a;
+    border-top: 8px solid #00D2BE;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
