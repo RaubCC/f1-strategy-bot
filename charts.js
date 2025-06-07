@@ -1,5 +1,87 @@
 import { currentStrategy } from './strategy.js';
 
+const baseLapTimes = {
+    'Soft (C5)': 80,
+    'Medium (C3)': 81,
+    'Hard (C1)': 83
+};
+
+export function drawLapDeltaChart() {
+    const ctx = document.getElementById('lapDeltaChart').getContext('2d');
+    const laps = Array.from({ length: 60 }, (_, i) => i + 1);
+
+    const strategyLapTimes = laps.map(lap => {
+        let tireType;
+        let stintStartLap;
+        if (lap <= currentStrategy.firstPitLap) {
+            tireType = currentStrategy.firstStintTire;
+            stintStartLap = 1;
+        } else if (lap <= currentStrategy.secondPitLap) {
+            tireType = currentStrategy.secondStintTire;
+            stintStartLap = currentStrategy.firstPitLap + 1;
+        } else {
+            tireType = currentStrategy.finalStintTire;
+            stintStartLap = currentStrategy.secondPitLap + 1;
+        }
+
+        const baseLap = baseLapTimes[tireType];
+        const tireAge = lap - stintStartLap;
+
+        // Spice: exponential lap time increase based on tire age
+        const degradationEffect = Math.pow(1 + (tireAge / 100), 2);
+        const lapTime = baseLap + degradationEffect + Math.random() * 0.2;
+
+        return lapTime;
+    });
+
+    if (window.lapDeltaChartInstance) {
+        window.lapDeltaChartInstance.destroy();
+    }
+
+    window.lapDeltaChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: laps,
+            datasets: [
+                {
+                    label: 'Strategy Lap Times (s)',
+                    borderColor: '#00ffe0',
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    tension: 0.3,
+                    data: strategyLapTimes,
+                    fill: false,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Lap Time (s)'
+                    },
+                    beginAtZero: false
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Lap'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#00D2BE'
+                    }
+                }
+            }
+        }
+    });
+}
+
 const tireWearRates = {
     'Soft (C5)': 2.0,
     'Medium (C3)': 1.3,
