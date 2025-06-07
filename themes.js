@@ -63,11 +63,17 @@ export const TEAM_THEMES = {
     }
 };
 // Cache your original summary text somewhere!
-let baseSummaryText = document.getElementById('summary-card').textContent;
+let baseSummaryText = null;
 
 function applyTeamTheme(driverName) {
     const team = getTeamForDriver(driverName);
     if (!team) return;
+
+    // Initialize baseSummaryText if not already set
+    if (baseSummaryText === null) {
+        const summaryCardElem = document.getElementById('summary-card');
+        baseSummaryText = summaryCardElem ? summaryCardElem.textContent : '';
+    }
 
     // Update card accents and simulate button
     document.querySelectorAll('.card').forEach(card => {
@@ -90,5 +96,6 @@ function applyTeamTheme(driverName) {
 // After you update the summary (e.g. after a simulation),
 // reset baseSummaryText to the latest summary before applying the theme!
 function updateBaseSummary() {
-    baseSummaryText = document.getElementById('summary-card').textContent;
+    const summaryCardElem = document.getElementById('summary-card');
+    baseSummaryText = summaryCardElem ? summaryCardElem.textContent : '';
 }
