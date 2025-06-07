@@ -101,11 +101,11 @@ export function drawLapDeltaChart() {
     }
     console.log('Lap Delta Debug:', currentStrategy.firstStintTire, currentStrategy.secondStintTire, currentStrategy.finalStintTire);
     const ctx = document.getElementById('lapDeltaChart');
-    if (!ctx) {
-        console.error('Lap Delta Debug: lapDeltaChart canvas not found');
+    if (!ctx || !ctx.getContext) {
+        console.error('Lap Delta Debug: lapDeltaChart canvas not found or not a canvas element');
         return;
     }
-    const chartCtx = ctx.getContext ? ctx.getContext('2d') : ctx;
+    const chartCtx = ctx.getContext('2d');
     const laps = Array.from({ length: 60 }, (_, i) => i + 1);
 
     const strategyLapTimes = laps.map(lap => {
@@ -122,8 +122,10 @@ export function drawLapDeltaChart() {
             stintStartLap = currentStrategy.secondPitLap + 1;
         }
 
-        const baseLap = baseLapTimes[tireType] || 82; // Fallback in case of mismatch
+        const baseLap = baseLapTimes[tireType];
         const tireAge = lap - stintStartLap;
+
+        // Spice: exponential lap time increase based on tire age
         const degradationEffect = Math.pow(1 + (tireAge / 100), 2);
         const lapTime = baseLap + degradationEffect + Math.random() * 0.2;
 
