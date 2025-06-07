@@ -62,3 +62,33 @@ export const TEAM_THEMES = {
         drivers: ["Kevin Magnussen", "Nico Hülkenberg"]
     }
 };
+// Cache your original summary text somewhere!
+let baseSummaryText = document.getElementById('summary-card').textContent;
+
+function applyTeamTheme(driverName) {
+    const team = getTeamForDriver(driverName);
+    if (!team) return;
+
+    // Update card accents and simulate button
+    document.querySelectorAll('.card').forEach(card => {
+        card.style.boxShadow = `0 2px 20px 2px ${team.color}33`;
+        card.style.border = `2px solid ${team.color}`;
+    });
+
+    document.getElementById('simulate-btn').style.background = team.color;
+    document.getElementById('simulate-btn').style.color = "#181c2c";
+    document.getElementById('simulate-btn').style.fontWeight = "bold";
+
+    // Only update summary card if it exists
+    const summaryCard = document.getElementById('summary-card');
+    if (summaryCard) {
+        // Always start with the *original* text, not the last themed one
+        summaryCard.innerHTML = `${team.logo} <b>${team.team}</b><br>${baseSummaryText}`;
+    }
+}
+
+// After you update the summary (e.g. after a simulation),
+// reset baseSummaryText to the latest summary before applying the theme!
+function updateBaseSummary() {
+    baseSummaryText = document.getElementById('summary-card').textContent;
+}
