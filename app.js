@@ -86,3 +86,6 @@ document.getElementById('driver-select').addEventListener('change', function (e)
 
 // Call once on load (in case there's a default)
 applyTeamTheme(document.getElementById('driver-select').value);
+
+const teamSelector = document.getElementById('teamSelector');
+const driverSelector = document.getElementById('driverSelector');
