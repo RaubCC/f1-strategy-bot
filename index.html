@@ -8,6 +8,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="favicon.ico" />
+    <script>
+        // Ensure the canvas context is available for tireChart
+        document.addEventListener('DOMContentLoaded', function() {
+            const tireChartCanvas = document.getElementById('tireChart');
+            if (tireChartCanvas) {
+                tireChartCanvas.getContext('2d');
+            }
+        });
+    </script>
 </head>
 <body>
     <header>
