@@ -9,7 +9,6 @@ export let currentStrategy = {
     driver: 'George Russell',
     grandPrix: 'Silverstone 🇬🇧'
 };
-
 // Simulate Strategy Function
 export function simulateStrategy() {
     // Show loading spinner
