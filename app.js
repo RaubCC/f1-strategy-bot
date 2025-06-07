@@ -1,3 +1,4 @@
+import { TEAM_THEMES } from './theme.js';
 import { drawTireChart, drawLapDeltaChart, drawPitWindowsChart } from './charts.js';
 import { updateRaceSummary } from './summary.js';
 export let currentStrategy = {
@@ -50,7 +51,6 @@ export function simulateStrategy() {
 
 // Add Event Listener to Simulate Button
 document.getElementById('simulate-btn').addEventListener('click', simulateStrategy);
-import { TEAM_THEMES } from "./theme.js"; // Or wherever you put the theme object
 
 function getTeamForDriver(driverName) {
     return Object.values(TEAM_THEMES).find(team =>
