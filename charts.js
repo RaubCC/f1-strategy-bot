@@ -56,6 +56,10 @@ export function drawLapDeltaChart() {
         },
         options: {
             responsive: true,
+            animation: {
+                duration: 1000,
+                easing: 'easeOutQuart'
+            },
             scales: {
                 y: {
                     title: {
