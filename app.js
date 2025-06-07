@@ -50,3 +50,39 @@ export function simulateStrategy() {
 
 // Add Event Listener to Simulate Button
 document.getElementById('simulate-btn').addEventListener('click', simulateStrategy);
+import { TEAM_THEMES } from "./theme.js"; // Or wherever you put the theme object
+
+function getTeamForDriver(driverName) {
+    return Object.values(TEAM_THEMES).find(team =>
+        team.drivers.includes(driverName)
+    );
+}
+
+function applyTeamTheme(driverName) {
+    const team = getTeamForDriver(driverName);
+    if (!team) return;
+
+    // Update card accents and simulate button
+    document.querySelectorAll('.card').forEach(card => {
+        card.style.boxShadow = `0 2px 20px 2px ${team.color}33`;
+        card.style.border = `2px solid ${team.color}`;
+    });
+
+    document.getElementById('simulate-btn').style.background = team.color;
+    document.getElementById('simulate-btn').style.color = "#181c2c";
+    document.getElementById('simulate-btn').style.fontWeight = "bold";
+
+    // Update summary card icon/team name
+    const summaryCard = document.getElementById('summary-card');
+    if (summaryCard) {
+        summaryCard.innerHTML = `${team.logo} <b>${team.team}</b><br>${summaryCard.textContent}`;
+    }
+}
+
+// Listen for driver select changes
+document.getElementById('driver-select').addEventListener('change', function (e) {
+    applyTeamTheme(e.target.value);
+});
+
+// Call once on load (in case there's a default)
+applyTeamTheme(document.getElementById('driver-select').value);
