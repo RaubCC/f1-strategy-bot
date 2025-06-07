@@ -7,6 +7,7 @@ const baseLapTimes = {
 };
 
 export function drawLapDeltaChart() {
+    console.log('Lap Delta Debug:', currentStrategy.firstStintTire, currentStrategy.secondStintTire, currentStrategy.finalStintTire);
     // Defensive: check if currentStrategy is defined and has the expected properties
     if (!currentStrategy || !currentStrategy.firstStintTire || !currentStrategy.secondStintTire || !currentStrategy.finalStintTire) {
         console.error('Lap Delta Debug: currentStrategy is missing or incomplete', currentStrategy);
