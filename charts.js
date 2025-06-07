@@ -131,6 +131,10 @@ export function drawTireChart() {
         },
         options: {
             responsive: true,
+            animation: {
+                duration: 1000, // 1 second animation
+                easing: 'easeOutQuart' // smooth and fast
+            },
             scales: {
                 y: {
                     title: {
