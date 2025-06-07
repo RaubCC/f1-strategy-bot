@@ -7,7 +7,12 @@ const baseLapTimes = {
 };
 
 export function drawLapDeltaChart() {
-    console.log('Lap Delta Debug:', currentStrategy.firstStintTire, currentStrategy.secondStintTire, currentStrategy.finalStintTire);
+    // Defensive: check if currentStrategy is defined and has the expected properties
+    if (!currentStrategy || !currentStrategy.firstStintTire || !currentStrategy.secondStintTire || !currentStrategy.finalStintTire) {
+        console.error('Lap Delta Debug: currentStrategy is missing or incomplete', currentStrategy);
+    } else {
+        console.log('Lap Delta Debug:', currentStrategy.firstStintTire, currentStrategy.secondStintTire, currentStrategy.finalStintTire);
+    }
     const ctx = document.getElementById('lapDeltaChart').getContext('2d');
     const laps = Array.from({ length: 60 }, (_, i) => i + 1);
 
